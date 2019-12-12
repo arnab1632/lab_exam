@@ -22,11 +22,23 @@ class AdminController extends Controller
     	}
     }
 	
-	function customer($id){
-        $user = DB::table('users')->where('type', "customer")
+	function customer(){
+        $user = DB::table('users')->where('type', 'customer')
 					->get(); 
                 
         return view('admin.customer')->with('users', $user);
+    }
+	
+	function deletecustomer($id){
+        $user = DB::table('users')->where('userId', $id)
+								->get(); 
+    
+        return view('admin.deletecustomer')->with('users', $user);
+    }
+	
+	function destroycustomer($id){
+    	users::destroy($id);
+    	return redirect()->route('admin.customer');
     }
 
     function details($id){
@@ -111,14 +123,7 @@ class AdminController extends Controller
 		$medicines->category = $req->category;
 		$medicines->save();
 
-        if($medicines->save()){
-
-            $medicines = new medicines();
-			$medicines->vendorname = $req->vendorname;
-			$medicines->price = $req->price;
-			$medicines->availability = $req->availability;
-			$medicines->type = $req->type;
-			$medicines->category = $req->category;
+        
 
             if($medicines->save()){
                 return redirect()->route('admin.index');
@@ -126,9 +131,6 @@ class AdminController extends Controller
                 else{
                     return redirect()->route('admin.addmedicine');
                 }
-        }
-        else{
-            return redirect()->route('admin.addmedicine');
-        }
+        
     }
 }

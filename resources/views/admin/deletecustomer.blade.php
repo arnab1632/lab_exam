@@ -16,11 +16,11 @@
 		</tr>
 		<tr>
 			<td>Username:</td>
-			<td>{{$m->Username}}</td>
+			<td>{{$m->username}}</td>
 		</tr>
 		<tr>
 			<td>Password:</td>
-			<td>{{$m->Password}}</td>
+			<td>{{$m->password}}</td>
 		</tr>
 		<tr>
 			<td>Type</td>

@@ -34,12 +34,6 @@ class RegisterController extends Controller
         $users->type = $req->type;
         
 
-        if($users->save()){
-
-            $user = new users();
-            $user->username = $req->username;
-            $user->password = $req->password;
-            $user->type = $req->type;
             
 				if($user->save()){
 					return redirect()->route('login.index');
@@ -47,9 +41,6 @@ class RegisterController extends Controller
                 else{
                     return redirect()->route('register.index');
                 }
-        }
-        else{
-            return redirect()->route('register.index');
-        }
+       
     }
 }

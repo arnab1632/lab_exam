@@ -24,7 +24,7 @@
 			<td>{{$m->password}}</td>
 			<td>{{$m->type}}</td>
 			<td>
-				<a href="{{route('admin.deletecustomer', $m->userId)}}">Delete</a> | 
+				<a href="{{route('admin.deletecustomer', $m->userId)}}">Delete</a>
 			</td>
 		</tr>
 	@endforeach
