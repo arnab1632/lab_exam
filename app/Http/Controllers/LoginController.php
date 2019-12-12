@@ -30,17 +30,17 @@ class LoginController extends Controller
 			$req->session()->put('name', $req->input('username'));
 			$req->session()->put('userId', $req->input('userId'));
 			$req->session()->put('password', $req->input('password'));
-			$req->session()->put('user', $user->type);
+			//$req->session()->put('user', $user->type);
 			//$req->session()->put('user', $user[0]->type);
 			$req->session()->put('user', $user);
 
-			//$type = $req->session()->get('user');
-			//if($type->type == 'admin' ){
+			$type = $req->session()->get('user');
+			if($type->type == 'admin' ){
 				return redirect()->route('home.index');
-			//}
-			//else{
-			//	return redirect()->route('customer.index');
-			//}
+			}
+			else{
+				return redirect()->route('customer.index');
+			}
 			
 		}else{
 

@@ -22,7 +22,7 @@ Route::group(['middleware'=>['sess']], function(){
 
 	Route::get('/home', ['as'=>'home.index','uses'=>'HomeController@index']);
 
-	//Route::group(['middleware'=>['admintype']], function(){
+	Route::group(['middleware'=>['admintype']], function(){
 		Route::get('/admin/customer', 'AdminController@customer')->name('admin.customer');
 		Route::get('/admin/deletecustomer/{id}', 'AdminController@deletecustomer')->name('admin.deletecustomer');
 		Route::post('/admin/deletecustomer/{id}', 'AdminController@destroycustomer');
@@ -35,10 +35,10 @@ Route::group(['middleware'=>['sess']], function(){
 		Route::get('/admin/delete/{id}', 'AdminController@delete')->name('admin.delete');
 		Route::post('/admin/delete/{id}', 'AdminController@destroy')->name('admin.destroy');
 		
-	//});
+	});
 	
-	//Route::group(['middleware'=>['customertype']], function(){
+	Route::group(['middleware'=>['customertype']], function(){
 		Route::get('/customer/index', 'CustomerController@index')->name('customer.index');
 		Route::get('/customer/medicine', 'CustomerController@medicine')->name('customer.medicine');
-	//});
+	});
 });

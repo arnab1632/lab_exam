@@ -20,5 +20,8 @@ class VerifyAdminType
         if( $user->type == 'admin'){
             return $next($request);
         }
+		else{
+            return redirect()->route('customer.index');
+        }
     }
 }

@@ -21,6 +21,9 @@ class VerifyCustomerType
         if( $user->type == 'customer'){
             return $next($request);
         }
+		else{
+            return redirect()->route('home.index');
+        }
         
     }
 }
